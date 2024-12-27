@@ -5,8 +5,15 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 8000;
 app.use(bodyParser.json());
+const corsOptions = {
+    origin: 'https://oxygent-front-klai671zs-iravisahus-projects.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true, 
+};
 
-app.use(cors());
+
+app.use(cors(corsOptions));
+
 mongoose.connect("mongodb+srv://r8936033768:kUYN6HaQmVpgZifJ@cluster0.y5q2n.mongodb.net/FoodEntry")
     .then(() => console.log("DB Connected"))
     .catch((err) => {
